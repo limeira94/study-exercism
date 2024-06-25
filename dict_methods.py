@@ -21,10 +21,7 @@ def read_notes(notes):
 
 def update_recipes(ideas, recipe_updates):
     for recipe_name, new_ingredients in recipe_updates:
-        if recipe_name in ideas:
-            ideas[recipe_name].update(new_ingredients)
-        else:
-            ideas[recipe_name] = new_ingredients
+        ideas[recipe_name] = new_ingredients
     return ideas
 
 
@@ -55,5 +52,6 @@ def update_store_inventory(fulfillment_cart, store_inventory):
 
 
 if __name__ == '__main__':
-    print(update_store_inventory({'Orange': [1, 'Aisle 4', False], 'Milk': [2, 'Aisle 2', True], 'Banana': [3, 'Aisle 5', False], 'Apple': [2, 'Aisle 4', False]},
-            {'Banana': [15, 'Aisle 5', False], 'Apple': [12, 'Aisle 4', False], 'Orange': [1, 'Aisle 4', False], 'Milk': [4, 'Aisle 2', True]}))
+    print(update_recipes({'Banana Bread' : {'Banana': 1, 'Apple': 1, 'Walnuts': 1, 'Flour': 1, 'Eggs': 2, 'Butter': 1},
+                'Raspberry Pie' : {'Raspberry': 1, 'Orange': 1, 'Pie Crust': 1, 'Cream Custard': 1}},
+            (('Banana Bread', {'Banana': 4,  'Walnuts': 2, 'Flour': 1, 'Eggs': 2, 'Butter': 1, 'Milk': 2, 'Eggs': 3}),)))
