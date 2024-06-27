@@ -9,7 +9,8 @@ from sets_categories_data import (VEGAN_INTERSECTIONS,
                                   VEGETARIAN, 
                                   PALEO, 
                                   KETO, 
-                                  OMNIVORE)
+                                  OMNIVORE,
+                                  example_dishes, EXAMPLE_INTERSECTION)
 
 
 def clean_ingredients(dish_name, dish_ingredients):
@@ -39,8 +40,7 @@ def check_drinks(drink_name, drink_ingredients):
     """
     if set(drink_ingredients).isdisjoint(ALCOHOLS):
         return f"{drink_name} Mocktail"
-    else:
-        return f"{drink_name} Cocktail"
+    return f"{drink_name} Cocktail"
 
 
 def categorize_dish(dish_name, dish_ingredients):
@@ -81,6 +81,7 @@ def tag_special_ingredients(dish):
     dish_name, ingredients = dish
     if set(ingredients).intersection(SPECIAL_INGREDIENTS):
         return tuple((dish_name, set(ingredients).intersection(SPECIAL_INGREDIENTS)))
+    return f"{dish_name}: Unknown Diet"
 
 
 def compile_ingredients(dishes):
@@ -123,8 +124,8 @@ def singleton_ingredients(dishes, intersection):
 
     The function should return a `set` of ingredients that only appear in a single dish.
     """
-
-    pass
+    
+    return set.union(*dishes).difference(intersection)  
 
 
 if __name__ == '__main__':
@@ -137,4 +138,4 @@ if __name__ == '__main__':
                 'Dahi Puri with Black Chickpeas','Avocado Deviled Eggs','Asparagus Puffs',
                 'Asparagus Puffs']
     
-    print(separate_appetizers(dishes, appetizers))
+    print(singleton_ingredients(example_dishes, EXAMPLE_INTERSECTION))
