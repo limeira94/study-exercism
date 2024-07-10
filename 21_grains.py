@@ -1,4 +1,4 @@
-def square(number):
+def square(number): 
     if number >= 1 and number <= 64:
         if number == 1:
             return 1

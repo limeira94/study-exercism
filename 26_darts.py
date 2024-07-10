@@ -7,4 +7,4 @@ def score(x, y):
     elif distance <= 10:
         return 1
     else:
-        return 0
+        return 0    
